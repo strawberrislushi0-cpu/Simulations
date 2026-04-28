@@ -1,41 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Free Lemons 💛</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Microgame Chaos</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #game {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .dot {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      cursor: pointer;
+      animation: shake 0.2s infinite;
+    }
+
+    #text {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      font-size: 40px;
+      animation: shake 0.2s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(2px, 2px); }
+      100% { transform: translate(-2px, -2px); }
+    }
+  </style>
 </head>
+
 <body>
+<div id="game">
+  <div id="text">CLICK</div>
+</div>
 
-  <div class="container">
-    <h1>Free Lemons 🍋</h1>
+<script>
+const game = document.getElementById("game");
+const text = document.getElementById("text");
 
-    <!-- Login -->
-    <div id="auth">
-      <input id="email" placeholder="Email">
-      <input id="password" type="password" placeholder="Password">
-      <button onclick="login()">Login</button>
-    </div>
+let speed = 2000;
 
-    <!-- Sign Up -->
-    <div id="auth">
-      <h2>Sign Up</h2>
-      <input id="email" placeholder="Email">
-      <input id="password" type="password" placeholder="Password">
-      <button onclick="signup()">Sign Up</button>
-    
-      <h2>Login</h2>
-      <button onclick="login()">Login</button>
-    </div>
-    
-    <!-- Chat -->
-    <div id="chat" style="display:none;">
-      <div id="messages"></div>
+function startMicrogame() {
+  text.innerText = "CLICK";
 
-      <input id="messageInput" placeholder="Say something...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
+  const dot = document.createElement("div");
+  dot.className = "dot";
 
-  <script src="script.js"></script>
+  // CENTER AREA (middle 40% of screen)
+  const centerWidth = window.innerWidth * 0.4;
+  const centerHeight = window.innerHeight * 0.4;
+
+  const offsetX = (window.innerWidth - centerWidth) / 2;
+  const offsetY = (window.innerHeight - centerHeight) / 2;
+
+  dot.style.left = offsetX + Math.random() * (centerWidth - 80) + "px";
+  dot.style.top = offsetY + Math.random() * (centerHeight - 80) + "px";
+
+  game.appendChild(dot);
+
+  let won = false;
+
+  dot.onclick = () => {
+    won = true;
+    game.removeChild(dot);
+    speed *= 0.9;
+    setTimeout(startMicrogame, 300);
+  };
+
+  setTimeout(() => {
+    if (!won) {
+      text.innerText = "GAME OVER";
+    }
+  }, speed);
+}
+
+startMicrogame();
+</script>
 </body>
 </html>
