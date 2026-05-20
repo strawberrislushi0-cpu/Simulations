@@ -2,32 +2,65 @@
 <html>
 <head>
   <title>Simulations</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    .simulation {
+      margin: 40px auto;
+    }
+
+    iframe {
+      display: block;
+      margin: 0 auto;
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+  </style>
 </head>
 
 <body>
-<div id="atom">
-  <iframe src="https://phet.colorado.edu/sims/html/build-an-atom/latest/build-an-atom_en.html"
-      width="500"
-      height="500"
-      allowfullscreen>
-  </iframe>
-</div>
-  
-<div id="molecule">
-  <iframe src="https://phet.colorado.edu/sims/html/build-a-molecule/latest/build-a-molecule_en.html"
-      width="500"
-      height="500"
-      allowfullscreen>
-  </iframe>
-</div>
 
-<div id="nucleus">
-  <iframe src="https://phet.colorado.edu/sims/html/build-a-nucleus/latest/build-a-nucleus_en.html"
+  <div id="atom" class="simulation">
+    <h2>Build a Atom</h2>
+    <iframe 
+      src="https://phet.colorado.edu/sims/html/build-an-atom/latest/build-an-atom_en.html"
       width="800"
       height="600"
+      title="Build a Atom"
       allowfullscreen>
-  </iframe>
-</div>
+    </iframe>
+  </div>
+  
+  <div id="molecule" class="simulation">
+    <h2>Build a Molecule</h2>
+    <iframe 
+      src="https://phet.colorado.edu/sims/html/build-a-molecule/latest/build-a-molecule_en.html"
+      width="800"
+      height="600"
+      title="Build a Molecule"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div id="nucleus" class="simulation">
+    <h2>Build a Nucleus</h2>
+    <iframe 
+      src="https://phet.colorado.edu/sims/html/build-a-nucleus/latest/build-a-nucleus_en.html"
+      width="800"
+      height="600"
+      title="Build a Nucleus"
+      allowfullscreen>
+    </iframe>
+  </div>
   
 </body>
 </html>
